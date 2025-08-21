@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1><b>Todo List</b></h1>
+
+    <form id="todo">
+        <input type="text" id="task" placeholder="Add a todo..."/>
+        <input type="date" id="date" placeholder="Add a todo..."/>
+        <button type="submit" id="add">+</button>
+        <br/>
+        <button type="button" id="filter">Filter</button>
+        <button type="button" id="deleteall">Delete All</button>
+    </form>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>TASK</th>
+                <th>DUE DATE</th>
+                <th>STATUS</th>
+                <th>ACTIONS</th>
+            </tr>
+        </thead>
+        <tbody id="body">
+            <tr id="empty">
+                <td colspan="4" style="text-align:center">No Task Found</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+<script src="js/javascript.js"></script>
+</html>
