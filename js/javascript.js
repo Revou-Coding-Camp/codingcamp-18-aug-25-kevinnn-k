@@ -11,14 +11,19 @@ form.addEventListener("submit", async function (e) {
     let task = taskInput.value
     let date = dateInput.value
 
-    let empty = document.getElementById("empty")
-    if (taskInput.value) {
-        empty.remove()
+    if (dateInput.value === "") {
+        alert("Date can't be empty");
+        return
     }
 
     if (taskInput.value.trim() === "") {
         alert("Task can't be empty");
         return;
+    }
+
+    let empty = document.getElementById("empty")
+    if (empty) {
+        empty.remove()
     }
 
     let row = document.createElement("tr");
@@ -35,6 +40,19 @@ form.addEventListener("submit", async function (e) {
     tdStatus.appendChild(checkbox)
 
     let tdActions = document.createElement("td");
+    let button = document.createElement("button");
+    button.innerText = "Delete"
+    tdActions.appendChild(button)
+
+    button.addEventListener("click", function () {
+        row.remove();
+
+        if (body.children.length === 0) {
+            body.innerHTML = '<tr id="empty"><td colspan="4" style="text-align:center">No Task Found</td></tr>'
+        }
+    });
+
+    
 
     row.appendChild(tdTask);
     row.appendChild(tdDueDate);
@@ -43,9 +61,36 @@ form.addEventListener("submit", async function (e) {
 
     body.appendChild(row);
 
-    
+    taskInput.value = "";
+    dateInput.value = "";
 
 }); 
 
+deleteButton.addEventListener("click", function () {
+    body.innerHTML = '<tr id="empty"><td colspan="4" style="text-align:center">No Task Found</td></tr>'
+});
 
+;
+let save = [];
+let filter = false
+
+filterButton.addEventListener("click", function () {
+    let checkboxes = body.querySelectorAll('input[type="checkbox"]')
     
+    if (!filter) {
+        checkboxes.forEach(cb => {
+            if (cb.checked) {
+                let a = cb.parentElement.parentElement
+                save.push(a);
+                a.remove();
+            };
+        });
+        filter = true;
+    } else {
+        save.forEach(a => {
+            body.appendChild(a);
+        });
+        save = [];
+        filter = false
+    };
+});
