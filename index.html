@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
 <body>
     <header>
@@ -12,12 +13,12 @@
     
 
     <form id="todo">
-        <input type="text" id="task" placeholder="Add a todo..."/>
-        <input type="date" id="date" placeholder="Add a todo..."/>
-        <button type="submit" id="add" style="align-content: center;">+</button>
+        <input type="text" id="task" placeholder="Add a todo..." class="input-box"/>
+        <input type="date" id="date" placeholder="Add a todo..." class="date-box"/>
+        <button type="submit" id="add" class="button-add" style="align-content: center;">+</button>
         <br/>
-        <button type="button" id="filter">Filter</button>
-        <button type="button" id="deleteall">Delete All</button>
+        <button type="button" id="filter" class="button-filter">Filter</button>
+        <button type="button" id="deleteall" class="button-delete">Delete All</button>
     </form>
     <table border="1">
         <thead>
